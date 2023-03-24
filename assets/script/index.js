@@ -93,3 +93,23 @@ function randomWord(words) {
     let random = words[Math.floor(Math.random() * words.length)];
     return random;
   }
+
+
+  StartBtn.addEventListener('click', () => {
+    BgSound.play();
+    
+ 
+    
+    textInput.focus();
+    
+    countdownTimer();
+    
+    let random = randomWord(words);
+    
+    words.splice(words.indexOf(random), 1);
+    
+    current.innerText = random;
+    textInput.maxLength = random.length;
+    
+  });
+
