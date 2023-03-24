@@ -1,0 +1,180 @@
+@import url(./reset.css);
+
+
+:root {
+  --app-dark-bg: #1a1d28;
+  --app-green: #33ab4e;
+  --app-purple: #833cff;
+  --app-orange: #ff833c;
+  --app-blue: #3c57ff;
+  --app-blue-hover: #364ee6;
+  --app-red: #ff3c57;
+  --app-red-hover: #ff2846;
+  --app-grey: #BEBEBE;
+  --app-white: #f1f1f1;
+}
+
+/*----------- Container -------*/
+
+.container {
+  width: min(100% - 30px, 1280px);
+  margin-inline: auto;
+}
+
+html {
+    scroll-behavior: smooth;
+  }
+
+/* -----Body----- */
+
+body{
+    background-color: var(--app-dark-bg);
+}
+header{
+    text-align: center;
+    background-color: var(--app-blue);
+    height: 60px;
+    line-height: 60px;
+}
+
+h1{
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--app-white);
+}
+
+.timer{
+    color:blue;
+    text-align: right;
+    margin: 15px 103px 0 0 ;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.grid{
+    min-height: 350px;
+    width: 1050px;
+    margin: 39px auto 0;
+    border-radius: 5px;
+    display: grid;
+    border: solid 1px var(--app-grey);
+    align-content: stretch;
+    justify-content: space-around;
+    align-items: stretch;
+    justify-items: center;
+    background-color: var(--app-purple);
+  
+}
+
+.current{
+
+    height: 0px;
+    text-align: center;
+    font-size: 50px;
+    font-weight: 700;
+    color: var(--app-white);
+}
+
+input[type=text] {
+
+    width: 260px;
+    height: 50px;
+    margin-top: 72px;
+    background-color:var(--app-dark-bg);
+    border-radius: 50px;
+    font-size: 17px;
+    color: var(--app-white);
+  
+    text-align: center;
+    line-height: 40px;
+  
+  }
+
+  
+.button {
+    display: flex;
+    gap: 20px;
+    align-content: space-between;
+   
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+.button + .button {
+    margin-left: 100px;
+}
+
+  .btn-1 {
+    cursor: pointer;
+    padding: 10px 35px;
+    font-size: 16px;
+    background-color: var(--app-orange);
+    color: var(--app-light-white);
+    border-radius: 30px;
+    margin-top: 20px;
+    outline: none;
+    box-shadow: 0 0 5px 2px rgba(28, 0, 181, 0.3);
+  }
+
+  .btn-1:hover {
+    border: 2px solid var(--app-dark-blue2);
+    cursor: pointer;
+  }
+
+  .btn-2 {
+    cursor: pointer;
+    padding: 10px 35px;
+    font-size: 16px;
+    background-color: #BA0021;
+    color: var(--app-light-white);
+    border-radius: 30px;
+    margin-top: 20px;
+    outline: none;
+    box-shadow: 0 0 5px 2px rgba(28, 0, 181, 0.3);
+  }
+  
+  .btn-2:hover {
+    border: 2px solid var(--app-dark-blue2);
+    cursor: pointer;
+  }
+
+
+  .btn-3 {
+    cursor: pointer;
+    padding: 10px 35px;
+    font-size: 16px;
+    background-color: var(--app-grey);
+    color: var(--app-red);
+    border-radius: 30px;
+    margin-top: 20px;
+    outline: none;
+    box-shadow: 0 0 5px 2px rgba(28, 0, 181, 0.3);
+    font-weight: 600;
+  }
+  .btn-3:hover {
+    border: 2px solid var(--app-dark-blue2);
+    cursor: pointer;
+  }
+
+  .bottom {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 20px 115px;
+  }
+  .hits{
+    color:blue;
+    text-align: right;
+   
+    font-size: 30px;
+    font-weight: 600;
+  }
+
+  .score{
+    color:blue;
+    text-align: right;
+   
+    font-size: 30px;
+    font-weight: 600;
+  }
