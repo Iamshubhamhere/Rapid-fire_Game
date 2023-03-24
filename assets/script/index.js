@@ -62,3 +62,34 @@ class Score {
       };
 }
 
+
+let hits = 0;
+let perc;
+let date = new Date().toDateString().slice(3, 10);
+const player = new Score(date, hits, perc);
+
+function countdownTimer() {
+  let countdown = 99;
+  let countdownInterval = setInterval(() => {
+    countdown--;
+    timer.innerText = `Timer: ${countdown} Seconds`;
+    
+    // will stop before typing the last word
+    // if(countdown === 0 || words.length === 0) {
+    if(countdown === 0) {
+      BgSound.pause();
+      
+      clearInterval(countdownInterval);
+      
+   
+      player.getPercentage();
+      highScore.innerText = player.getScore();
+    }
+  }, 1000);
+}
+
+
+function randomWord(words) {
+    let random = words[Math.floor(Math.random() * words.length)];
+    return random;
+  }
