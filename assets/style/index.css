@@ -32,15 +32,15 @@ body{
 }
 header{
     text-align: center;
-    background-color: var(--app-blue);
+    background-color:transparent;
     height: 60px;
     line-height: 60px;
 }
 
 h1{
-    font-size: 30px;
-    font-weight: 500;
-    color: var(--app-white);
+    font-size: 50px;
+    font-weight: 700;
+    color: var(--app-orange);
 }
 
 .timer{
@@ -49,6 +49,17 @@ h1{
     margin: 15px 103px 0 0 ;
     font-size: 30px;
     font-weight: 600;
+}
+
+.text-input{
+  text-align: center;
+}
+
+p {
+  font-size: 20px;
+  color: var(--app-dark-bg);
+  margin-top: 21px;
+  font-weight: 600;
 }
 
 .grid{
@@ -105,7 +116,7 @@ input[type=text] {
     margin-left: 100px;
 }
 
-  .btn-1 {
+  .start {
     cursor: pointer;
     padding: 10px 35px;
     font-size: 16px;
@@ -117,12 +128,12 @@ input[type=text] {
     box-shadow: 0 0 5px 2px rgba(28, 0, 181, 0.3);
   }
 
-  .btn-1:hover {
+  .start:hover {
     border: 2px solid var(--app-dark-blue2);
     cursor: pointer;
   }
 
-  .btn-2 {
+  .hardMode {
     cursor: pointer;
     padding: 10px 35px;
     font-size: 16px;
@@ -134,13 +145,13 @@ input[type=text] {
     box-shadow: 0 0 5px 2px rgba(28, 0, 181, 0.3);
   }
   
-  .btn-2:hover {
+  .hardMode:hover {
     border: 2px solid var(--app-dark-blue2);
     cursor: pointer;
   }
 
 
-  .btn-3 {
+  .reset {
     cursor: pointer;
     padding: 10px 35px;
     font-size: 16px;
@@ -152,7 +163,7 @@ input[type=text] {
     box-shadow: 0 0 5px 2px rgba(28, 0, 181, 0.3);
     font-weight: 600;
   }
-  .btn-3:hover {
+  .reset:hover {
     border: 2px solid var(--app-dark-blue2);
     cursor: pointer;
   }
