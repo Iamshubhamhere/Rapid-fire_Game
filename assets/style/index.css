@@ -92,6 +92,9 @@ h1{
     background-color: var(--app-purple);
   
 }
+.instruction {
+  margin-left: 150px;
+}
 
 .current{
 
@@ -146,6 +149,7 @@ input[type=text] {
     margin-top: 20px;
     outline: none;
     box-shadow: 0 0 5px 2px rgba(28, 0, 181, 0.3);
+    font-weight: 600;
   }
 
   .start:hover {
