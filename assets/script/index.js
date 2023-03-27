@@ -131,6 +131,21 @@ function getRandomWord() {
     
   });
 
+  hardMode.addEventListener('click', () =>{
+    gameRunning = true;
+    setInterval(updateTime, 1000);
+    setTimeout(() => {
+      setInterval();
+    }, 99000);
+    textInput.style.visibility = 'visible';
+    hardModeSound.play();
+    hardModeSound.loop = true;
+    textInput.focus();
+    displayRandomWord() ;
+    current.style.visibility = 'visible';
+    
+  })
+
   
   textInput.addEventListener('input', e => {
     const insertedText = e.target.value;
@@ -186,9 +201,11 @@ resetBtn.addEventListener('click', () => {
   gameRunning = false;
   BgSound.pause();
   BgSound.currentTime = 0;
+  hardModeSound.pause();
+  hardModeSound.currentTime = 0;
   noOfHits.innerHTML = `${hits}`;
   highScore.innerHTML = `${points}`;
-  timer.innerHTML = `${time}s`;
+  timer.innerHTML = `0`;
   textInput.value = '';
   textInput.style.visibility = 'hidden';
   current.value = '';
