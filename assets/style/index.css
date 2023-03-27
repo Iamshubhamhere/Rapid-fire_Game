@@ -28,45 +28,54 @@ html {
 /* -----Body----- */
 
 body{
-    background-color: var(--app-dark-bg);
-}
+    background:
+    linear-gradient(red, transparent),
+    linear-gradient(to top left, lime, transparent),
+    linear-gradient(to top right, blue, transparent);
+    background-blend-mode: screen;
+ }
 header{
     text-align: center;
     background-color:transparent;
-    height: 60px;
+    height: 100px;
     line-height: 60px;
+    
 }
 
 h1{
-    font-size: 50px;
+    font-family: 'Rubik Vinyl';
+    font-size: 55px;
     font-weight: 700;
-    color: var(--app-orange);
-}
+    color: var(--app-dark-bg);
+    line-height: 100px;
+  }
 
 .timer{
     color:blue;
     text-align: right;
-    margin: 15px 103px 0 0 ;
+    margin: 15px 112px 0 0 ;
     font-size: 30px;
     font-weight: 600;
 }
 
 .text-input{
   text-align: center;
+  visibility: hidden;
 }
 
-p {
+ 
+ h2 {
   font-size: 20px;
   color: var(--app-dark-bg);
-  margin-top: 21px;
+  margin-top: 7px;
   font-weight: 600;
 }
 
 .grid{
     min-height: 350px;
     width: 1050px;
-    margin: 39px auto 0;
-    border-radius: 5px;
+    margin: 32px auto 0;
+    border-radius: 50px;
     display: grid;
     border: solid 1px var(--app-grey);
     align-content: stretch;
@@ -84,6 +93,7 @@ p {
     font-size: 50px;
     font-weight: 700;
     color: var(--app-white);
+    margin-top: 25px;
 }
 
 input[type=text] {
@@ -91,7 +101,7 @@ input[type=text] {
     width: 260px;
     height: 50px;
     margin-top: 72px;
-    background-color:var(--app-dark-bg);
+    background-color: rgba(255, 255, 255, 0.24);
     border-radius: 50px;
     font-size: 17px;
     color: var(--app-white);
@@ -101,12 +111,15 @@ input[type=text] {
   
   }
 
+  input::placeholder {
+    color: var(--app-dark-bg);
+  }
   
 .button {
     display: flex;
     gap: 20px;
     align-content: space-between;
-   
+    position: bottom;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: baseline;
@@ -176,16 +189,20 @@ input[type=text] {
   }
   .hits{
     color:blue;
-    text-align: right;
-   
+    text-align: center;
+    background-color: var(--app-red);
+    width: 205px;
+    border-radius: 30px;
     font-size: 30px;
     font-weight: 600;
   }
 
   .score{
     color:blue;
-    text-align: right;
-   
+    text-align: center;
+    background-color: var(--app-red);
     font-size: 30px;
     font-weight: 600;
+    width: 205px;
+    border-radius: 30px;
   }

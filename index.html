@@ -12,9 +12,7 @@
     <link rel="Shortcut icon" href="./assets/images/icon.png" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,600;1,700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,600;1,700&family=Rubik+Vinyl&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
 
 </head>
@@ -26,13 +24,13 @@
  <main>
     <div class="center container">
      <div class="timer">
-        Time left: 0 sec
+        Time left: <span id="timer"> 0</span> 
      </div>
      <div class="grid">
         <p class="current"> </p>
         <div class="text-input">
             <input type="text" name="txt-input"  placeholder="Start Typing...">
-            <p class=".message"></p>
+            <h2 class="#message"></h2>
         </div>
         <div class="button">
             <button class="start" type="submit">Start</button>
@@ -42,10 +40,10 @@
      </div>
      <div class="bottom">
         <div class="hits">
-            No. of hits: 0
+            No. of hits: <span id="hits"> 0</span>
         </div>
      <div class="score">
-        High score : 0
+        Your score: <span id="score"> 0</span> 
      </div>
     </div>
     </div>
