@@ -129,6 +129,7 @@ function getRandomWord() {
     current.style.visibility = 'visible';
     textInput.style.color = '#1a1d28';
     hardMode.disabled = true;
+    grid.style.background = 'transparent';
     
     
   });
