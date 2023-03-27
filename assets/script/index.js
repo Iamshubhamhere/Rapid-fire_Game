@@ -143,6 +143,7 @@ function getRandomWord() {
     textInput.focus();
     displayRandomWord() ;
     current.style.visibility = 'visible';
+    current.style.fontFamily = 'Rubik Vinyl';
     
   })
 
