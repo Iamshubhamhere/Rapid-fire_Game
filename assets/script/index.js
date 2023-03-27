@@ -130,7 +130,7 @@ function getRandomWord() {
     textInput.style.color = '#1a1d28';
     hardMode.disabled = true;
     grid.style.background = 'transparent';
-    
+    resetBtn.style.visibility = 'visible';
     
   });
 
