@@ -112,6 +112,8 @@ function getRandomWord() {
     current.innerHTML = randomWord;
   }
 
+  
+
   StartBtn.addEventListener('click', () => {
    
     gameRunning = true;
@@ -125,8 +127,8 @@ function getRandomWord() {
     textInput.focus();
     displayRandomWord() ;
     current.style.visibility = 'visible';
-    
-  
+    textInput.style.color = '#1a1d28';
+    hardMode.disabled = true;
     
     
   });
@@ -144,7 +146,8 @@ function getRandomWord() {
     displayRandomWord() ;
     current.style.visibility = 'visible';
     current.style.fontFamily = 'Rubik Vinyl';
-    
+    grid.style.background = 'url("./assets/images/background.png") no-repeat center center/cover';
+    StartBtn.disabled = true;
   })
 
   
@@ -199,7 +202,11 @@ resetBtn.addEventListener('click', () => {
     'famous', 'league', 'memory', 'leather', 'planet', 'software', 'update', 'yellow',
     'keyboard', 'window', 'population'
   );
+  StartBtn.disabled = false;
+  current.style.fontFamily = 'Nunito';
+  hardMode.disabled = false;
   gameRunning = false;
+  grid.style.background = 'none';
   BgSound.pause();
   BgSound.currentTime = 0;
   hardModeSound.pause();
