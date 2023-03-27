@@ -188,7 +188,7 @@ input[type=text] {
     margin: 20px 115px;
   }
   .hits{
-    color:blue;
+    color:var(--app-dark-bg);
     text-align: center;
     background-color: var(--app-red);
     width: 205px;
@@ -198,7 +198,7 @@ input[type=text] {
   }
 
   .score{
-    color:blue;
+    color:var(--app-dark-bg);
     text-align: center;
     background-color: var(--app-red);
     font-size: 30px;
