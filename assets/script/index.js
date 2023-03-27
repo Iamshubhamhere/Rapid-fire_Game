@@ -92,13 +92,8 @@ function updateTime() {
 }
 
 
+let randomWord = ' ';
 
-
-
-function randomWord(words) {
-    const random = words[Math.floor(Math.random() * words.length)];
-    return random;
-  }
 
 function getRandomWord() {
     let wordSelected = words[Math.floor(Math.random() * words.length)];
@@ -121,23 +116,17 @@ function getRandomWord() {
    
     gameRunning = true;
     setInterval(updateTime, 1000);
-
     setTimeout(() => {
       setInterval();
     }, 99000);
     textInput.style.visibility = 'visible';
     BgSound.play();
-    
- 
-    
+    BgSound.loop = true;
     textInput.focus();
+    displayRandomWord() ;
+    current.style.visibility = 'visible';
     
-    let random = randomWord(words);
-    
-    words.splice(words.indexOf(random), 1);
-    
-    current.innerText = random;
-    textInput.maxLength = random.length;
+  
     
     
   });
@@ -175,7 +164,7 @@ resetBtn.addEventListener('click', () => {
   hits = 0;
   perc = 0;
   points = 0;
-  time = 0;
+  time = 99;
   
   words.splice(0, words.length);
   words.push(
@@ -201,8 +190,8 @@ resetBtn.addEventListener('click', () => {
   highScore.innerHTML = `${points}`;
   timer.innerHTML = `${time}s`;
   textInput.value = '';
-  textInput.style.visibility = 'visible';
+  textInput.style.visibility = 'hidden';
   current.value = '';
-  current.style.visibility = 'visible';
+  current.style.visibility = 'hidden';
   message.innerHTML = ' ';
 });
