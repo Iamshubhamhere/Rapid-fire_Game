@@ -37,7 +37,7 @@ body{
 header{
     text-align: center;
     background-color:transparent;
-    height: 100px;
+   
     line-height: 60px;
     
 }
@@ -51,18 +51,29 @@ h1{
   }
 
 .timer{
-    color:blue;
-    text-align: right;
-    margin: 15px 112px 0 0 ;
-    font-size: 30px;
-    font-weight: 600;
-    display: flex;
-    align-items: baseline;
-    justify-content: flex-end;
+  color: blue;
+  text-align: right;
+  align-content: center;
+  justify-items: center;
+  font-size: 30px;
+  font-weight: 600;
+  display: grid;
 }
 
 #timer {
- margin-left: 10px;
+ color: #16537e;
+ font-size: 62px;
+}
+
+#alarm-img {
+  height: 20px;
+  text-align: right;
+}
+
+.center {
+  display: grid;
+
+  place-items: center;
 }
 
 .text-input{
@@ -79,21 +90,20 @@ h1{
 }
 
 .grid{
-    min-height: 350px;
-    width: 1050px;
-    margin: 32px auto 0;
+    min-height: 540px;
+    width: 526px;
+  
     border-radius: 50px;
     display: grid;
     border: solid 1px var(--app-grey);
-    align-content: stretch;
-    justify-content: space-around;
-    align-items: stretch;
     justify-items: center;
-    
-  
+    justify-content: space-evenly;
+    align-content: space-evenly;
 }
-.instruction {
-  margin-left: 150px;
+
+.instruction{
+  font-size: 22px;
+  font-weight: 500;
 }
 
 .current{
@@ -103,7 +113,7 @@ h1{
     font-size: 50px;
     font-weight: 700;
     color: var(--app-dark-bg);
-    margin-top: 25px;
+   
 }
 
 input[type=text] {
@@ -111,7 +121,8 @@ input[type=text] {
     width: 260px;
     height: 50px;
     margin-top: 72px;
-    background-color: rgba(255, 255, 255, 0.24);
+    background-color: var(--app-grey);
+   
     border-radius: 50px;
     font-size: 17px;
     color: var(--app-dark-bg);
@@ -193,18 +204,12 @@ input[type=text] {
     cursor: pointer;
   }
   
-  
-  #alarm-img {
-    height: 20px;
-    text-align: right;
-    margin-right: 10px;
-  }
-  .bottom {
+  .bottom{
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin: 20px 115px;
+    align-items: center;
   }
+
+  
   .hits{
     color:var(--app-dark-bg);
     text-align: center;
@@ -224,3 +229,57 @@ input[type=text] {
     width: 205px;
     border-radius: 30px;
   }
+
+  .hits + .score {
+    margin-left: 15px;
+  }
+
+  .highScoresDlg {
+    color: #fff;
+    text-align: center;
+    margin: auto 0 auto auto;
+    padding: 30px;
+    height: 100%;
+    width: 300px;
+    background-color: rgba(0, 0, 0, 0.3);
+    animation: 0.5s ease-in-out score-enter;
+}
+
+.highScoresDlg h3 {
+    text-align: center;
+    color: var(--app-dark-bg);
+    font-size: 25px;
+    margin-bottom: 20px;
+    animation: 1s ease-in-out score-enter;
+}
+
+.highScoresDlg img {
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    right: 85px;
+    bottom: 25px;
+    cursor: pointer;
+}
+
+.highScore-text {
+    margin: 15px auto;
+    color: #a6eca8;
+    display: flex;
+    justify-content: space-between;
+    translate: 300px 0;
+    animation: 1s 0.5s ease-in-out forwards scores;
+}
+
+
+
+@keyframes scores {
+    from {
+        opacity: 0;
+        translate: 300px 0;
+    } to {
+        opacity: 1;
+        translate: 0px 0;
+    }
+}

@@ -6,10 +6,13 @@ const current = document.querySelector('.current');
 const textInput = document.querySelector('.text-input');
 const StartBtn = document.querySelector('.start');
 const resetBtn = document.querySelector('.reset');
-const hardMode = document.querySelector('.hardMode');
+const highScoresBtn = document.querySelector('.hardMode');
 const noOfHits = document.querySelector('#hits');
 const highScore = document.querySelector('#score');
 const message = document.querySelector('h2');
+const center = document.querySelector('body');
+const highScoreDlg = document.querySelector('.highScoresDlg');
+const body = document.querySelector('body');
 
 const BgSound = new Audio('./assets/audio/backgroundSound.mp3');
 BgSound.type = 'audio/mp3';
@@ -66,19 +69,18 @@ class Score {
 
 
 let hits = 0;
-let perc;
-let date = new Date().toDateString().slice(3, 10);
-const player = new Score(date, hits, perc);
+let percentage;
 let time = 99;
 let points = 0 ;
 let gameRunning = false;
+let highScoreList = JSON.parse(localStorage.getItem('highScores'));
 //Update time
 
 function updateTime() {
   if (!gameRunning) {
     return;
   }
-  timer.innerHTML = `${time}s`;
+  timer.innerHTML = `${time}`;
     if(time > 0){
     // decrement
     time--;
@@ -112,6 +114,24 @@ function getRandomWord() {
     current.innerHTML = randomWord;
   }
 
+  function endGame() {
+    const date = new Date();
+    const options = {month: 'short', day: 'numeric', year: 'numeric'};
+    const formattedDate = date.toLocaleDateString('en-US', options);
+    highScoreDlg.innerHTML = '<h3>High Score</h3>';
+    percentage = ((hits / words.length) * 100).toFixed(2);
+    const newScore = new Score(formattedDate, hits, percentage);
+    highScoreList.push(newScore);
+    highScoreList.sort((a, b) => b.hits - a.hits);
+    highScoreList.splice(9);
+    const scoreToText = JSON.stringify(highScoreList);
+    localStorage.setItem('highScores', scoreToText);
+    createScoreText(highScoreList);
+    highScoreDlg.show();
+    BgSound.pause();
+    BgSound.currentTime = 0;
+    BgSound.loop = false;
+  };
   
 
   StartBtn.addEventListener('click', () => {
@@ -134,22 +154,24 @@ function getRandomWord() {
     
   });
 
-  hardMode.addEventListener('click', () =>{
-    gameRunning = true;
-    setInterval(updateTime, 1000);
-    setTimeout(() => {
-      setInterval();
-    }, 99000);
-    textInput.style.visibility = 'visible';
-    hardModeSound.play();
-    hardModeSound.loop = true;
-    textInput.focus();
-    displayRandomWord() ;
-    current.style.visibility = 'visible';
-    current.style.fontFamily = 'Rubik Vinyl';
-    grid.style.background = 'url("./assets/images/background.png") no-repeat center center/cover';
-    StartBtn.disabled = true;
-  })
+  // hardMode.addEventListener('click', () =>{
+  //   gameRunning = true;
+  //   setInterval(updateTime, 1000);
+  //   setTimeout(() => {
+  //     setInterval();
+  //   }, 99000);
+  //   textInput.style.visibility = 'visible';
+  //   hardModeSound.play();
+  //   hardModeSound.loop = true;
+  //   textInput.focus();
+  //   displayRandomWord() ;
+  //   current.style.visibility = 'visible';
+  //   current.style.fontFamily = 'Rubik Vinyl';
+  //   center.style.background = 'url("./assets/images/background.png") no-repeat center center/cover';
+  //   grid.style.background = 'rgba(57, 47, 47, 0.152)';
+  //   StartBtn.disabled = true;
+  //   resetBtn.style.visibility = 'visible';
+  // })
 
   
   textInput.addEventListener('input', e => {
@@ -162,6 +184,7 @@ function getRandomWord() {
       hits++;
       noOfHits.innerHTML = `${hits}`;
       highScore.innerHTML = `${points}`;
+      
       if (points === 90) {
         endGame();
       }
@@ -220,4 +243,51 @@ resetBtn.addEventListener('click', () => {
   current.value = '';
   current.style.visibility = 'hidden';
   message.innerHTML = ' ';
+});
+
+
+function createScoreText(array) {
+  array.forEach(object => {
+    const newDiv = document.createElement('div');
+    newDiv.classList.add('highScore-text');
+
+    addScoreText(object, newDiv);
+
+    highScoreDlg.appendChild(newDiv);
+  });
+}
+
+function addScoreText(object, div) {
+  let p1 = document.createElement('p');
+  let p2 = document.createElement('p');
+  let p3 = document.createElement('p');
+  let p4 = document.createElement('p');
+
+  p1.innerHTML = `#${highScoreList.indexOf(object) + 1}`;
+  
+  p2.innerHTML = `${object.score} hits`;
+  p3.innerHTML = `${object.percentage}%`;
+  p4.innerHTML = `on ${object.date}`;
+
+  div.appendChild(p1);
+  div.appendChild(p2);
+  div.appendChild(p3);
+  div.appendChild(p4);
+}
+
+// body.onload = function() {
+//   if (highScoreList.length > 0) {
+//       highScoreDlg.innerHTML = '<h3>High Score</h3>';
+//       createScoreText(highScoreList);
+//   } else {
+//       highScoreDlg.innerHTML = '<h3>High Score</h3>No scores yet';
+//   }
+  
+// }
+
+
+highScoresBtn.addEventListener('click', function(e) {
+  e.stopPropagation();
+
+  highScoreDlg.show();
 });
