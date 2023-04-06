@@ -75,9 +75,9 @@ let points = 0 ;
 let gameRunning = false;
 let highScoreList = JSON.parse(localStorage.getItem('ScoreMade'));
 const date = new Date();
-const options = {month: 'short', day: 'numeric', year: 'numeric'};
-const formattedDate = date.toLocaleDateString('en-US', options);
-
+    const options = {month: 'short', day: 'numeric', year: 'numeric'};
+    const formattedDate = date.toLocaleDateString('en-US', options);
+const player = new Score(formattedDate, hits, percentage);
 
 //Update time
 
@@ -120,8 +120,39 @@ function getRandomWord() {
     current.innerHTML = randomWord;
   }
 
-  function endGame() {
+  function saveScore() {
+    const board =
+    localStorage.length > 0 ? JSON.parse(localStorage.getItem('score')) : [];
+    const playerScore = {
+      date: player.date,
+      hits: player.hits,
+      perc: `${player.percentage.toFixed(2)}%`
+    }
+    
+    board.push(playerScore);
+    board.sort(({hits: a}, {hits: b}) => b - a);
+    
+    const topFive = board.length > 9 ? board.splice(0, 9) : board;
+    localStorage.setItem('score', JSON.stringify(topFive));
+  };
   
+  function hasScore() {  
+    if (localStorage.length > 0) {
+      setTimeout(() => {
+        highScoreDlg.show();
+      }, 1500);
+      
+      const array = JSON.parse(localStorage.getItem('score'));
+      
+      for (let i = 0; i < array.length; i++) {
+        let score = `${i + 1}º Place: ${array[i].date} | Hits: ${array[i].hits} | ${array[i].percentage}`;
+        highScoreDlg.innerHTML += `<p>${score}</p>`;
+      }
+    };
+  }
+
+  function endGame() {
+    
     highScoreDlg.innerHTML = '<h3>High Score</h3>';
     percentage = ((hits / words.length) * 100).toFixed(2);
     const newScore = new Score(formattedDate, hits, percentage);
@@ -153,11 +184,12 @@ function getRandomWord() {
     displayRandomWord() ;
     current.style.visibility = 'visible';
     textInput.style.color = '#1a1d28';
-  
+    
     grid.style.background = 'transparent';
     resetBtn.style.visibility = 'visible';
     
   });
+
 
   
   textInput.addEventListener('input', e => {
@@ -213,7 +245,7 @@ resetBtn.addEventListener('click', () => {
   );
   StartBtn.disabled = false;
   current.style.fontFamily = 'Nunito';
-  // hardMode.disabled = false;
+ 
   gameRunning = false;
   grid.style.background = 'none';
   BgSound.pause();
@@ -233,37 +265,10 @@ resetBtn.addEventListener('click', () => {
   }, 600);
 });
 
-const player = new Score(formattedDate, hits, percentage);
 
-function saveScore() {
-  const board =
-  localStorage.length > 0 ? JSON.parse(localStorage.getItem('score')) : [];
-  const playerScore = {
-    date: player.formattedDate,
-    hits: player.hits,
-    percentage: `${player.percentage.toFixed(2)}%`
-  }
-  
-  board.push(playerScore);
-  board.sort(({hits: a}, {hits: b}) => b - a);
-  
-  const topFive = board.length > 9 ? board.splice(0, 9) : board;
-  localStorage.setItem('score', JSON.stringify(topFive));
-};
 
-function hasScore() {  
-  if (localStorage.length > 0) {
-    setTimeout(() => {
-      highScoreDlg.show();
-    }, 1500);
-    
-    const array = JSON.parse(localStorage.getItem('score'));
-    
-    for (let i = 0; i < array.length; i++) {
-      let score = `${i + 1}º Place: ${array[i].formattedDate} | Hits: ${array[i].hits} | ${array[i].percentage}`;
-      highScoreDlg.innerHTML += `<p>${score}</p>`;
-    }
-  };
-}
+highScoresBtn.addEventListener('click', function(e) {
+  e.stopPropagation();
 
-hasScore();
+  highScoreDlg.show();
+});
