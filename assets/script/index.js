@@ -246,6 +246,7 @@ function endGame() {
   BgSound.pause();
   BgSound.currentTime = 0;
   BgSound.loop = false;
+  saveScore();
 }
 
 StartBtn.addEventListener("click", () => {
@@ -418,3 +419,5 @@ highScoresBtn.addEventListener("click", function (e) {
 
   highScoreDlg.show();
 });
+
+hasScore();
